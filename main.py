@@ -16,6 +16,8 @@ TEXT = (
 
 
 def main() -> None:
+    if not 1 <= len(TEXT) <= 280 or not TEXT.strip():
+        raise SystemExit("entry text fails the 1-280 char gate")
     out = Path(os.environ.get("ENTRY_OUTPUT", "/output/entry.txt"))
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(TEXT, encoding="utf-8")
